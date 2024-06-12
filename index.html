@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memo Management Application</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Memo Management</h1>
+        <nav>
+            <button onclick="showMemoList('all')">All Memos</button>
+            <button onclick="showMemoList('incoming')">Incoming Memos</button>
+            <button onclick="showMemoList('outgoing')">Outgoing Memos</button>
+            <button onclick="showMemoForm()">Create Memo</button>
+        </nav>
+        <section id="search-bar" class="hidden">
+            <input type="text" id="search-query" placeholder="Search memos">
+            <button onclick="searchMemos()">Search</button>
+        </section>
+        <section id="memo-list" class="hidden">
+            <h2 id="memo-list-title">All Memos</h2>
+            <ul id="memos"></ul>
+        </section>
+        <section id="memo-form" class="hidden">
+            <h2>Create Memo</h2>
+            <form id="new-memo-form" onsubmit="createMemo(event)">
+                <label for="title">Title</label>
+                <input type="text" id="title" required>
+                <label for="content">Content</label>
+                <textarea id="content" required></textarea>
+                <label for="type">Type</label>
+                <select id="type" required>
+                    <option value="incoming">Incoming</option>
+                    <option value="outgoing">Outgoing</option>
+                </select>
+                <button type="submit">Save Memo</button>
+            </form>
+        </section>
+        <section id="memo-detail" class="hidden">
+            <h2>Memo Detail</h2>
+            <div id="memo-content"></div>
+            <button onclick="showMemoList()">Back to List</button>
+            <button id="edit-memo" onclick="showEditForm()">Edit</button>
+            <button id="delete-memo" onclick="deleteMemo()">Delete</button>
+        </section>
+        <section id="edit-memo-form" class="hidden">
+            <h2>Edit Memo</h2>
+            <form id="update-memo-form" onsubmit="updateMemo(event)">
+                <input type="hidden" id="edit-id">
+                <label for="edit-title">Title</label>
+                <input type="text" id="edit-title" required>
+                <label for="edit-content">Content</label>
+                <textarea id="edit-content" required></textarea>
+                <label for="edit-type">Type</label>
+                <select id="edit-type" required>
+                    <option value="incoming">Incoming</option>
+                    <option value="outgoing">Outgoing</option>
+                </select>
+                <button type="submit">Update Memo</button>
+            </form>
+        </section>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
